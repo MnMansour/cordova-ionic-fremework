@@ -1,0 +1,29 @@
+<ion-modal-view ng-controller="DishCommentController">
+  <ion-header-bar align-title="center" class="bar-positive">
+    <div class="buttons">
+      <button class="button button-icon icon ion-close-circled" ng-click="closeCommentForm()"></button>
+    </div>
+    <h1 class="title">Comment Form</h1>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="submitComment()" name="commentForm">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="e.g. John Smith" ng-model="mycomment.author">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">Your Rate</div>
+        <select ng-model="mycomment.rating">
+          <option ng-repeat="n in [1,2,3,4,5]" value="{{n}}">{{n}}</option>
+        </select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Your Comment</span>
+        <textarea type="text" placeholder="Comments" ng-model="mycomment.comment"></textarea>
+      </label>
+      <label class="item">
+        <button class="button button-block button-positive" type="submit">Post Comment</button>
+      </label>
+    </form>
+  </ion-content>
+</ion-modal-view>
