@@ -9,19 +9,19 @@ angular.module('conFusion.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  // Form data for the login modal
+  // login modal
   $scope.loginData = $localStorage.getObject('userinfo', '{}');
   $scope.reservationData = {};
   $scope.registration = {};
 
-  //******************LOGIN MODAL**************************************
+  //====LOGIN MODAL
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
-  }).then(function(modal) {
+  }).then(function(modal){
     $scope.modal = modal;
   });
-  // Triggered in the login modal to close it
+  // login modal to close it
   $scope.closeLogin = function() {
     $scope.modal.hide();
   };
@@ -29,25 +29,23 @@ angular.module('conFusion.controllers', [])
   $scope.login = function() {
     $scope.modal.show();
   };
-  // Perform the login action when the user submits the login form
+  // submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
     $localStorage.storeObject('userinfo', $scope.loginData);
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
   };
-  //*****************REGISTER MODAL************************************
-  // Create the registration modal that we will use later
+  //=======REGISTER MODAL
+  // Create the registration modal 
   $ionicModal.fromTemplateUrl('templates/register.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.registerform = modal;
   });
-  // Triggered in the registration modal to close it
+  //  modal to close it
   $scope.closeRegister = function() {
     $scope.registerform.hide();
   };
@@ -55,15 +53,13 @@ angular.module('conFusion.controllers', [])
   $scope.register = function() {
     $scope.registerform.show();
   };
-  // Perform the registration action when the user submits the registration form
+  //  submits the registration form
   $scope.doRegister = function() {
-    // Simulate a registration delay. Remove this and replace with your registration
-    // code if using a registration system
     $timeout(function() {
       $scope.closeRegister();
     }, 1000);
   };
-  //*****************CAMERA SETTING***********************************
+  //=======CAMERA SETTING
   $ionicPlatform.ready(function() {
     var options = {
       quality: 50,
@@ -87,14 +83,14 @@ angular.module('conFusion.controllers', [])
 
     };
   });
-  //*******************RESERVATION*************************************
-  // Create the reserve modal that we will use later
+  //=======RESERVATION
+  // Create the reserve modal 
   $ionicModal.fromTemplateUrl('templates/reservation-form.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.reserveform = modal;
   });
-  // Triggered in the reserve modal to close it
+  //  the reserve modal to close it
   $scope.closeReserve = function() {
     $scope.reserveform.hide();
   };
@@ -102,12 +98,10 @@ angular.module('conFusion.controllers', [])
   $scope.reserve = function() {
     $scope.reserveform.show();
   };
-  // Perform the reserve action when the user submits the reserve form
+  //  submits the reserve form
   $scope.doReserve = function() {
     console.log('Doing reservation', $scope.reservationData);
 
-    // Simulate a reservation delay. Remove this and replace with your reservation
-    // code if using a server system
     $timeout(function() {
       $scope.closeReserve();
     }, 1000);
@@ -220,7 +214,7 @@ angular.module('conFusion.controllers', [])
   $scope.baseURL = baseURL;
   $scope.message = "Loading ...";
   $scope.dish = dish;
-  //**********POPOVER****************************************************
+  //======POPOVER
   $ionicPopover.fromTemplateUrl('templates/dish-detail-popover.html', {
     scope: $scope
   }).then(function(popover) {
@@ -237,7 +231,7 @@ angular.module('conFusion.controllers', [])
     favoriteFactory.addToFavorites(index);
     $scope.closePopover();
   };
-  //*******MODAL***********************************************************
+  //=======MODAL
   $ionicModal.fromTemplateUrl('templates/dish-comment-form.html', {
     scope: $scope,
     animation: 'slide-in-up'
@@ -281,7 +275,6 @@ angular.module('conFusion.controllers', [])
   }
 }])
 
-// implement the IndexController and About Controller here
 
 .controller('IndexController', ['$scope', 'baseURL', 'leader', 'dish', 'promotion', function($scope, baseURL, leader, dish, promotion) {
   $scope.baseURL = baseURL;
